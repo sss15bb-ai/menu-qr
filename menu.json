@@ -1,0 +1,174 @@
+{
+  "shop": { "ar": "BURGER HOUSE", "en": "BURGER HOUSE" },
+  "tagline": { "ar": "YOUR BURGER. YOUR RULES.", "en": "YOUR BURGER. YOUR RULES." },
+  "cuisine": { "ar": "برجر ووجبات سريعة", "en": "Burgers & Fast Food" },
+  "currency": { "ar": "ريال", "en": "SAR" },
+  "footer": {
+    "ar": "إذا كانت لديك حساسية غذائية فأخبر الموظف قبل الطلب.",
+    "en": "Please tell our staff about any food allergies before ordering."
+  },
+
+  "theme": {
+    "primary": "#E87524",
+    "secondary": "#F5F0E8",
+    "background": "#171717",
+    "text": "#FFFFFF"
+  },
+
+  "info": {
+    "address": { "ar": "شارع أنس بن مالك، حي الملقا، الرياض", "en": "Anas Ibn Malik St, Al Malqa, Riyadh" },
+    "mapQuery": "BURGER HOUSE, Anas Ibn Malik St, Al Malqa, Riyadh",
+    "hours": { "ar": "يومياً من 4:00 مساءً إلى 2:00 صباحاً", "en": "Daily, 4:00 PM – 2:00 AM" },
+    "phone": "0551234567",
+    "whatsapp": "966551234567",
+    "instagram": "burgerhouse.sa",
+    "delivery": true,
+    "pickup": true
+  },
+
+  "allergens": {
+    "gluten":  { "ar": "جلوتين", "en": "Gluten", "icon": "🌾" },
+    "dairy":   { "ar": "حليب",   "en": "Dairy",  "icon": "🥛" },
+    "eggs":    { "ar": "بيض",    "en": "Eggs",   "icon": "🥚" },
+    "nuts":    { "ar": "مكسرات", "en": "Nuts",   "icon": "🥜" },
+    "sesame":  { "ar": "سمسم",   "en": "Sesame", "icon": "⚪" },
+    "fish":    { "ar": "سمك",    "en": "Fish",   "icon": "🐟" },
+    "soy":     { "ar": "صويا",   "en": "Soy",    "icon": "🫘" }
+  },
+
+  "categories": [
+    {
+      "ar": "البرجر", "en": "Burgers", "icon": "🍔",
+      "items": [
+        {
+          "ar": "كلاسيك برجر", "en": "Classic Burger",
+          "descAr": "برجر لحم بقري مع جبنة شيدر وخس وطماطم وصوص خاص.",
+          "descEn": "Beef patty with cheddar cheese, lettuce, tomato and house sauce.",
+          "price": 24, "image": "images/classic-burger.svg",
+          "available": true, "allergens": ["gluten", "dairy", "eggs", "sesame"]
+        },
+        {
+          "ar": "دبل سماش", "en": "Double Smash",
+          "descAr": "قطعتان من لحم البقر مع جبنة شيدر وبصل وصوص سماش.",
+          "descEn": "Two beef patties with cheddar cheese, onion and smash sauce.",
+          "price": 32, "image": "images/double-smash.svg",
+          "available": true, "allergens": ["gluten", "dairy", "eggs", "sesame"]
+        },
+        {
+          "ar": "كرسبي تشيكن", "en": "Crispy Chicken",
+          "descAr": "دجاج مقرمش مع خس ومخلل وصوص رانش.",
+          "descEn": "Crispy chicken with lettuce, pickles and ranch sauce.",
+          "price": 26, "image": "images/crispy-chicken.svg",
+          "available": true, "allergens": ["gluten", "dairy", "eggs", "sesame"]
+        }
+      ]
+    },
+    {
+      "ar": "المقبلات", "en": "Sides", "icon": "🍟",
+      "items": [
+        {
+          "ar": "بطاطس مقلية", "en": "French Fries",
+          "descAr": "بطاطس مقلية.",
+          "descEn": "Crispy golden fries.",
+          "price": 9, "image": "images/fries.svg",
+          "available": true, "allergens": []
+        },
+        {
+          "ar": "لودد فرايز", "en": "Loaded Fries",
+          "descAr": "بطاطس مقلية مع الجبنة والصوص.",
+          "descEn": "Fries topped with cheese and sauce.",
+          "price": 17, "image": "images/loaded-fries.svg",
+          "available": true, "allergens": ["dairy", "eggs"]
+        },
+        {
+          "ar": "ناجتس دجاج", "en": "Chicken Nuggets",
+          "descAr": "6 قطع دجاج مقرمشة.",
+          "descEn": "6 crispy chicken pieces.",
+          "price": 15, "image": "images/nuggets.svg",
+          "available": true, "allergens": ["gluten"]
+        },
+        {
+          "ar": "حلقات البصل", "en": "Onion Rings",
+          "descAr": "حلقات بصل مقلية.",
+          "descEn": "Crispy fried onion rings.",
+          "price": 12, "image": "images/onion-rings.svg",
+          "available": true, "allergens": ["gluten"]
+        }
+      ]
+    },
+    {
+      "ar": "المشروبات", "en": "Drinks", "icon": "🥤",
+      "items": [
+        {
+          "ar": "بيبسي", "en": "Pepsi",
+          "descAr": "مشروب غازي بارد.", "descEn": "Chilled soft drink.",
+          "price": 5, "image": "images/pepsi.svg",
+          "available": true, "allergens": []
+        },
+        {
+          "ar": "سفن أب", "en": "7UP",
+          "descAr": "مشروب غازي بنكهة الليمون.", "descEn": "Lemon-lime soft drink.",
+          "price": 5, "image": "images/7up.svg",
+          "available": true, "allergens": []
+        },
+        {
+          "ar": "مياه", "en": "Water",
+          "descAr": "مياه معبأة.", "descEn": "Bottled water.",
+          "price": 2, "image": "images/water.svg",
+          "available": true, "allergens": []
+        },
+        {
+          "ar": "عصير برتقال", "en": "Orange Juice",
+          "descAr": "عصير برتقال بارد.", "descEn": "Chilled orange juice.",
+          "price": 9, "image": "images/orange-juice.svg",
+          "available": true, "allergens": []
+        },
+        {
+          "ar": "ميلك شيك فراولة", "en": "Strawberry Milkshake",
+          "descAr": "ميلك شيك كريمي بالفراولة.", "descEn": "Creamy strawberry milkshake.",
+          "price": 16, "image": "images/strawberry-milkshake.svg",
+          "available": true, "allergens": ["dairy"]
+        },
+        {
+          "ar": "ميلك شيك شوكولاتة", "en": "Chocolate Milkshake",
+          "descAr": "ميلك شيك كريمي بالشوكولاتة.", "descEn": "Creamy chocolate milkshake.",
+          "price": 16, "image": "images/chocolate-milkshake.svg",
+          "available": true, "allergens": ["dairy"]
+        }
+      ]
+    },
+    {
+      "ar": "الحلويات", "en": "Desserts", "icon": "🍰",
+      "items": [
+        {
+          "ar": "براوني شوكولاتة", "en": "Chocolate Brownie",
+          "descAr": "براوني غني بالشوكولاتة.", "descEn": "Rich chocolate brownie.",
+          "price": 14, "image": "images/chocolate-brownie.svg",
+          "available": true, "allergens": ["gluten", "dairy", "eggs"]
+        },
+        {
+          "ar": "تشيز كيك", "en": "Cheesecake",
+          "descAr": "قطعة تشيز كيك كريمية.", "descEn": "A slice of creamy cheesecake.",
+          "price": 18, "image": "images/cheesecake.svg",
+          "available": true, "allergens": ["gluten", "dairy", "eggs"]
+        },
+        {
+          "ar": "آيس كريم", "en": "Ice Cream",
+          "descAr": "آيس كريم بارد.", "descEn": "Cold ice cream.",
+          "price": 8, "image": "images/ice-cream.svg",
+          "available": true, "allergens": ["dairy"]
+        }
+      ]
+    },
+    {
+      "ar": "الإضافات", "en": "Add-ons", "icon": "➕", "addons": true,
+      "items": [
+        { "ar": "جبنة إضافية", "en": "Extra Cheese", "price": 3, "available": true, "allergens": ["dairy"] },
+        { "ar": "قطعة لحم إضافية", "en": "Extra Patty", "price": 9, "available": true, "allergens": [] },
+        { "ar": "صوص إضافي", "en": "Extra Sauce", "price": 2, "available": true, "allergens": ["eggs"] },
+        { "ar": "حجم بطاطس كبير", "en": "Large Fries Upgrade", "price": 5, "available": true, "allergens": [] },
+        { "ar": "إزالة المكونات", "en": "Remove Ingredients", "price": 0, "available": true, "allergens": [] }
+      ]
+    }
+  ]
+}
