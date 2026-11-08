@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#171717">
 <meta name="color-scheme" content="dark">
-<title>Menu</title>
+<title>BURGER HOUSE | Menu</title>
+<meta name="description" content="منيو BURGER HOUSE – برجر ووجبات سريعة، حي الملقا، الرياض. YOUR BURGER. YOUR RULES.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BURGER HOUSE – Menu">
+<meta property="og:description" content="YOUR BURGER. YOUR RULES. منيو برجر هاوس – الملقا، الرياض">
+<meta property="og:url" content="https://menu-qr-4ii.pages.dev/">
+<meta property="og:image" content="https://menu-qr-4ii.pages.dev/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -71,7 +82,8 @@
     font-size: 0.82rem; padding: 6px 12px; border-radius: 999px;
     background: var(--card-2); color: var(--secondary);
   }
-  .chip b { color: var(--accent); font-weight: 700; }
+  .chip.open { background: rgba(52, 199, 89, 0.16); color: #6BE38A; font-weight: 700; }
+  .chip.closed { background: var(--danger-soft); color: var(--danger); font-weight: 700; }
 
   /* Category tabs */
   #tabs {
@@ -186,10 +198,12 @@ const DEFAULT_LANG = "ar";
 const STORAGE_KEY = "menu-lang";
 const UI = {
   ar: { unavailable: "غير متوفر", contains: "يحتوي على", switchTo: "English",
+        openNow: "● مفتوح الآن", closedNow: "● مغلق الآن",
         free: "مجاناً", addonsNote: "تُضاف إلى أي وجبة.", delivery: "توصيل", pickup: "استلام من الفرع",
         about: "معلومات المطعم", call: "اتصال", whatsapp: "واتساب", instagram: "إنستغرام", map: "الموقع",
         error: "تعذّر تحميل المنيو. يرجى تحديث الصفحة." },
   en: { unavailable: "Unavailable", contains: "Contains", switchTo: "العربية",
+        openNow: "● Open now", closedNow: "● Closed now",
         free: "Free", addonsNote: "Add to any meal.", delivery: "Delivery", pickup: "Pickup",
         about: "Restaurant info", call: "Call", whatsapp: "WhatsApp", instagram: "Instagram", map: "Location",
         error: "Could not load the menu. Please refresh the page." }
@@ -271,9 +285,26 @@ function renderHeader() {
   const chips = document.getElementById("chips");
   chips.innerHTML = "";
   const info = DATA.info || {};
+  const open = isOpenNow(info);
+  if (open !== null) chips.appendChild(el("span", "chip " + (open ? "open" : "closed"), open ? t.openNow : t.closedNow));
   if (info.hours) chips.appendChild(el("span", "chip", "🕓 " + txt(info.hours)));
   if (info.delivery) chips.appendChild(el("span", "chip", "🛵 " + t.delivery));
   if (info.pickup) chips.appendChild(el("span", "chip", "🛍️ " + t.pickup));
+}
+
+// Returns true/false from info.open/close ("HH:MM", may cross midnight), or null if unknown.
+function isOpenNow(info) {
+  if (!info.open || !info.close) return null;
+  try {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: info.timezone || "Asia/Riyadh", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+    }).formatToParts(new Date());
+    const get = function (type) { return Number(parts.find(function (p) { return p.type === type; }).value); };
+    const now = get("hour") * 60 + get("minute");
+    const toMin = function (s) { const a = s.split(":"); return Number(a[0]) * 60 + Number(a[1]); };
+    const o = toMin(info.open), c = toMin(info.close);
+    return c > o ? (now >= o && now < c) : (now >= o || now < c);
+  } catch (e) { return null; }
 }
 
 function renderTabs() {
@@ -417,7 +448,10 @@ document.getElementById("langBtn").addEventListener("click", function () {
 applyLang();
 fetch("menu.json", { cache: "no-cache" })
   .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(function (json) { DATA = json; applyTheme(DATA.theme); render(); })
+  .then(function (json) {
+    DATA = json; applyTheme(DATA.theme); render();
+    setInterval(renderHeader, 60000); // keep the open/closed badge current
+  })
   .catch(function (err) {
     console.error(err);
     const list = document.getElementById("items");
